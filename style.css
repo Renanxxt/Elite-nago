@@ -1,0 +1,99 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #000000;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 28px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 22px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.menu a:hover {
+    color: #ffee04;
+}
+
+.conteudo {
+    padding: 100px 20px 40px;
+    text-align: center;
+}
+
+.conteudo h1 {
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.conteudo p {
+    color: #000000;
+}
+
+@media (max-width: 600px) {
+    .menu {
+        display: none;
+    }
+}
+.boas-vindas {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    padding: 50px 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+.bv-texto { flex: 1; min-width: 260px; }
+.bv-tag {
+    background: #ede9fe; color: #7c3aed;
+    padding: 5px 14px; border-radius: 20px;
+    font-size: 0.7rem; font-weight: 800;
+    letter-spacing: 1px;
+}
+.bv-texto h1 { font-size: 1.9rem; color: #1e293b; margin: 12px 0; }
+.bv-texto p { color: #64748b; font-size: 0.95rem; margin-bottom: 20px; }
+.btn-primario {
+    padding: 12px 24px; background: #a855f7; color: white;
+    border: none; border-radius: 10px;
+    font-weight: 700; cursor: pointer;
+}
+.bv-imagem { flex: 1; min-width: 260px; }
+.bv-imagem img {
+    width: 100%; border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}

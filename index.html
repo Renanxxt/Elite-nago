@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #123a01;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 28px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 22px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.menu a:hover {
+    color: #ffee04;
+}
+
+.conteudo {
+    padding: 100px 20px 40px;
+    text-align: center;
+}
+
+.conteudo h1 {
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.conteudo p {
+    color: #000000;
+}
+
+@media (max-width: 600px) {
+    .menu {
+        display: none;
+    }
+}
+.boas-vindas {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    padding: 50px 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+.bv-texto { flex: 1; min-width: 260px; }
+.bv-tag {
+    background: #ede9fe; color: #000000;
+    padding: 5px 14px; border-radius: 20px;
+    font-size: 0.7rem; font-weight: 800;
+    letter-spacing: 1px;
+}
+.bv-texto h1 { font-size: 1.9rem; color: #1e293b; margin: 12px 0; }
+.bv-texto p { color: #64748b; font-size: 0.95rem; margin-bottom: 20px; }
+.btn-primario {
+    padding: 12px 24px; background: #0d4201; color: white;
+    border: none; border-radius: 10px;
+    font-weight: 700; cursor: pointer;
+}
+.bv-imagem { flex: 1; min-width: 260px; }
+.bv-imagem img {
+    width: 100%; border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+.sobre {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    padding: 50px 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    flex-wrap: wrap-reverse;
+}
+.sobre-imagem { flex: 1; min-width: 260px; }
+.sobre-imagem img { width: 100%; border-radius: 16px; }
+.sobre-texto { flex: 1; min-width: 260px; }
+.sobre-tag {
+    background: #fce7f3; color: #be185d;
+    padding: 5px 14px; border-radius: 20px;
+    font-size: 0.7rem; font-weight: 800;
+    letter-spacing: 1px;
+}
+.sobre-texto h2 { color: #1e293b; margin: 12px 0; font-size: 1.6rem; }
+.sobre-texto p { color: #64748b; margin-bottom: 16px; font-size: 0.95rem; }
+.sobre-lista { list-style: none; padding: 0; }
+.sobre-lista li {
+    padding: 6px 0;
+    color: #334155; font-weight: 600;
+    font-size: 0.92rem;
+}
+.localizacao {
+    display: flex;
+    gap: 30px;
+    padding: 50px 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+.local-texto { flex: 1; min-width: 260px; }
+.local-texto h2 { color: #1e293b; font-size: 1.6rem; margin-bottom: 18px; }
+.local-texto p { color: #334155; margin-bottom: 16px; font-size: 0.92rem; line-height: 1.6; }
+.local-mapa { flex: 1; min-width: 260px; }
+.blog { padding: 50px 20px; text-align: center; background: #f8fafc; }
+.blog h2 { color: #1e293b; font-size: 1.7rem; margin-bottom: 30px; }
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.post {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    transition: 0.2s;
+}
+.post:hover { transform: translateY(-5px); box-shadow: 0 10px 24px rgba(168,85,247,0.15); }
+.post img { width: 100%; aspect-ratio: 5/3; object-fit: cover; }
+.post-info { padding: 16px 18px 20px; }
+.post-data { color: #94a3b8; font-size: 0.75rem; font-weight: 700; }
+.post-info h3 { color: #1e293b; font-size: 1rem; margin: 8px 0; }
+.post-info p { color: #64748b; font-size: 0.85rem; margin-bottom: 12px; }
+.post-info a { color: #a855f7; font-weight: 700; text-decoration: none; font-size: 0.85rem; }
+.btn-menu {
+    padding: 10px 18px; background: #a855f7; color: white;
+    border: none; border-radius: 8px;
+    font-weight: 700; cursor: pointer; margin: 20px;
+}
+.menu-lat {
+    position: fixed; top: 0; left: -280px;
+    width: 280px; height: 100vh;
+    background: #1e1b4b; color: white;
+    padding: 30px 22px;
+    transition: left 0.3s; z-index: 1000;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+}
+.menu-lat.aberto { left: 0; }
+.menu-lat h3 { color: #c084fc; margin-bottom: 20px; }
+.menu-lat a {
+    display: block; color: white; text-decoration: none;
+    padding: 12px 0; border-bottom: 1px solid #312e81;
+    font-weight: 600;
+}
+.overlay-lat {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: none; z-index: 999;
+}
+.overlay-lat.aberto { display: block; }
+</style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="logo">🔰 Elite Nagô</div>
+    <ul class="menu">
+        <li><a href="#">Início</a></li>
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Serviços</a></li>
+        <li><a href="#">Contato</a></li>
+    </ul>
+</nav>
+< class="conteudo">
+    <h1>🔰Elite Nagô</h1>
+    <p>Venha conhecer a nossa equipe de capoeira e promovemos!</p>
+<section class="boas-vindas">
+    <div class="bv-texto">
+        <span class="bv-tag">BEM-VINDO</span>
+        <h1>Olá! Que bom te ver por aqui 👋</h1>
+        <p>Somos um equipe grupo de capoeira Elite Nagô, que busca promover a cultura afro-brasileira e a prática da capoeira.
+        </p>
+        <button class="btn-primario">Conheça nossa história</button>
+    </div>
+    <div class="bv-imagem">
+        <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlCY3mMAXntRRpLdG694RSCwI9Xwqt9jS98GXAnbUQ6n8-qxZFQ8eEsf58VGdkPq5i-X7ix0Wv3RqYGV0ILg20eJoKhMuf297XENkiNJokYmTBr_M1ecjLb3Hb0SXj0EgT8KG-YsIw4RfGx=s680-w680-h510-rw" alt="Boas-vindas">
+    </div>
+</section>
+<section class="sobre">
+    <div class="sobre-imagem">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPD_z3x6apfucctTl4Fz9jbVaMvtiEtwHiPqEnIEzkFeEcsC_GHbctxiLR&s=10" alt="Sobre nós">
+    </div>
+    <div class="sobre-texto">
+        <span class="sobre-tag">SOBRE NÓS</span>
+        <h2>Transformamos pessoas em grandes capoeiras!!</h2>
+        <p>O Instituto Cultural Elite Nagô é um grupo e movimento cultural de capoeira com forte atuação em Juiz de Fora e região, além de municípios vizinhos como Laranjal.</p>
+        <ul class="sobre-lista">
+            <li>✅ Disciplina e Respeito</li>
+            <li>✅ Honra e Preservação</li>
+            <li>✅  Pertencimento </li>
+        </ul>
+    </div>
+</section>
+<section class="localizacao">
+    <div class="local-texto">
+        <h2>📍 Onde nos encontrar</h2>
+        <p><strong>Endereço:</strong><br>Av. Presidente Juscelino Kubitschek, 6263 - Araújo, 36090-180<br>Juiz de Fora - MG</p>
+        <p><strong>Horário:</strong><br>Segunda e Quarta: 19:45 às 21:30</p>
+        <p><strong>Telefone:</strong><br>(32) 99999-0000</p>
+    </div>
+    <div class="local-mapa">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3707.260731359925!2d-43.433615777523855!3d-21.692597088677772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x989f0050ca7a43%3A0x9d21549f3a8911b1!2sCapoeira%20Elite%20Nag%C3%B4!5e0!3m2!1spt-BR!2sbr!4v1790365134618!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+</section>
+<section class="blog">
+    <h2>Últimas do Elite</h2>
+    <div class="blog-grid">
+        <article class="post">
+            <img src="https://picsum.photos/id/180/400/240" alt="">
+            <div class="post-info">
+                <span class="post-data">📅 12/03/2026</span>
+                <h3>Como começar em programação</h3>
+                <p>Guia completo para quem está iniciando na área de tecnologia.</p>
+                <a href="#">Ler mais →</a>
+            </div>
+        </article>
+        <article class="post">
+            <img src="https://picsum.photos/id/24/400/240" alt="">
+            <div class="post-info">
+                <span class="post-data">📅 08/03/2026</span>
+                <h3>5 tendências de design para 2026</h3>
+                <p>Descubra o que vai dominar as interfaces este ano.</p>
+                <a href="#">Ler mais →</a>
+            </div>
+        </article>
+        <article class="post">
+            <img src="https://picsum.photos/id/26/400/240" alt="">
+            <div class="post-info">
+                <span class="post-data">📅 01/03/2026</span>
+                <h3>Produtividade para devs</h3>
+                <p>Ferramentas e hábitos que aumentam seu rendimento.</p>
+                <a href="https://www.instagram.com/reel/DbWEoaexQ7m/?utm_source=ig_web_button_share_sheet&stkn=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" class="btn-demo escuro">
+            </div>
+        </article>
+    </div>
+</section>
+<script>
+function abrirMenuLat() {
+    document.getElementById("menuLat").classList.add("aberto");
+    document.getElementById("overlayLat").classList.add("aberto");
+}
+function fecharMenuLat() {
+    document.getElementById("menuLat").classList.remove("aberto");
+    document.getElementById("overlayLat").classList.remove("aberto");
+}
+</script>
+</body>
+</html>
